@@ -36,15 +36,26 @@ async function encryptMessage(message, password) {
   }));
 }
 
+const toast = document.getElementById("toast");
+
+function showToast() {
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2000);
+}
+
 document.getElementById("encryptBtn").addEventListener("click", async () => {
   const message = document.getElementById("message").value.trim();
   const password = document.getElementById("password").value.trim();
+  if (!message || !password) return;
 
-  if (!message || !password) {
-    alert("Message and secret key are required.");
-    return;
-  }
+  const encrypted = await encryptMessage(message, password);
+  document.getElementById("output").value = encrypted;
+});
 
-  const result = await encryptMessage(message, password);
-  document.getElementById("output").value = result;
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  const output = document.getElementById("output").value;
+  if (!output) return;
+
+  await navigator.clipboard.writeText(output);
+  showToast();
 });
