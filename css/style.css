@@ -1,13 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
 :root {
-  --bg-dark: #020617;
-  --bg-deep: #020024;
   --neon-blue: #00f5ff;
   --neon-purple: #7c7cff;
-  --neon-red: #ff4d4d;
-  --glass: rgba(255, 255, 255, 0.10);
-  --border: rgba(255, 255, 255, 0.22);
 }
 
 * {
@@ -22,108 +17,53 @@ body {
   background:
     radial-gradient(circle at top left, #0ea5e9, transparent 45%),
     radial-gradient(circle at bottom right, #7c7cff, transparent 45%),
-    linear-gradient(135deg, var(--bg-dark), var(--bg-deep));
+    linear-gradient(135deg, #020617, #020024);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   color: #e5e7eb;
-  overflow-x: hidden;
 }
 
-/* 🌌 animated ambient glow */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  width: 320px;
-  height: 320px;
-  filter: blur(140px);
-  opacity: 0.35;
-  z-index: -1;
-}
-
-body::before {
-  background: var(--neon-blue);
-  top: -120px;
-  left: -120px;
-}
-
-body::after {
-  background: var(--neon-purple);
-  bottom: -120px;
-  right: -120px;
-}
-
-/* 🧊 MAIN GLASS CARD */
 .container {
   width: 100%;
-  max-width: 420px;
-  padding: 26px 22px;
+  max-width: 440px;
+  padding: 26px;
   background: linear-gradient(
     145deg,
     rgba(255, 255, 255, 0.14),
     rgba(255, 255, 255, 0.03)
   );
   backdrop-filter: blur(26px);
-  -webkit-backdrop-filter: blur(26px);
   border-radius: 22px;
-  border: 1px solid var(--border);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.65),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  animation: popIn 0.9s ease;
-}
-
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* 🧠 HEADINGS */
-h1, h2 {
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #f9fafb;
-}
-
-h1 {
-  font-size: clamp(22px, 6vw, 28px);
-  margin-bottom: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.65);
 }
 
 h2 {
-  font-size: clamp(20px, 5vw, 24px);
+  text-align: center;
   margin-bottom: 6px;
+  font-weight: 700;
 }
 
 p {
   text-align: center;
-  font-size: clamp(13px, 3.5vw, 14px);
+  font-size: 14px;
   opacity: 0.75;
   margin-bottom: 22px;
 }
 
-/* ✍️ INPUTS */
 textarea,
 input {
   width: 100%;
-  margin-bottom: 14px;
   padding: 14px 15px;
+  margin-bottom: 14px;
   border-radius: 14px;
-  border: 1px solid transparent;
+  border: none;
   outline: none;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255,255,255,0.12);
   color: #fff;
   font-size: 14px;
-  transition: all 0.2s ease;
 }
 
 textarea {
@@ -131,20 +71,7 @@ textarea {
   resize: none;
 }
 
-textarea::placeholder,
-input::placeholder {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-textarea:focus,
-input:focus {
-  border: 1px solid var(--neon-blue);
-  box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.35);
-}
-
-/* 🔘 BUTTONS */
-button,
-.btn {
+button {
   width: 100%;
   padding: 14px;
   border-radius: 14px;
@@ -152,36 +79,73 @@ button,
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.3px;
-  color: #020617;
   background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-  box-shadow: 0 10px 30px rgba(0, 245, 255, 0.45);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  color: #020617;
+  margin-bottom: 14px;
 }
 
-button:hover,
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0, 245, 255, 0.55);
+/* 📦 OUTPUT BOX */
+.box {
+  position: relative;
 }
 
-.btn.secondary {
-  background: linear-gradient(135deg, #ff6a6a, #ff3d3d);
-  color: #fff;
-  box-shadow: 0 10px 30px rgba(255, 77, 77, 0.45);
-}
-
-/* 🧭 HOME BUTTON STACK */
-.actions {
+/* 🧾 COPY CODE BUTTON (GitHub-style) */
+.code-action {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(2,6,23,0.85);
+  color: #e5e7eb;
+  cursor: pointer;
+  z-index: 2;
+  width: auto !important;
+  min-width: unset;
+  max-width: unset;
+  white-space: nowrap;
 }
 
-/* 📱 MOBILE FIRST DONE — DESKTOP BOOST */
-@media (min-width: 768px) {
-  .container {
-    max-width: 480px;
-    padding: 30px;
-  }
+.code-action svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ✅ KEY FIX — space for copy button */
+.box textarea {
+  padding-top: 44px;
+}
+
+/* 🔔 TOAST */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(15,23,42,0.95);
+  color: #e5e7eb;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.code-action {
+  width: auto !important;
+  white-space: nowrap;
+}
+
+.box textarea {
+  padding-top: 44px;
 }
