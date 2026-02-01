@@ -40,15 +40,18 @@ document.getElementById("decryptBtn").addEventListener("click", async () => {
   const encrypted = document.getElementById("encrypted").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  if (!encrypted || !password) {
-    alert("Encrypted text and secret key are required.");
-    return;
-  }
+  if (!encrypted || !password) return;
 
   try {
     const result = await decryptMessage(encrypted, password);
     document.getElementById("output").value = result;
   } catch {
-    alert("Invalid key or corrupted message.");
+    alert("Invalid secret key or corrupted message.");
   }
+});
+
+/* 📋 Paste from clipboard */
+document.getElementById("pasteBtn").addEventListener("click", async () => {
+  const text = await navigator.clipboard.readText();
+  document.getElementById("encrypted").value = text;
 });
