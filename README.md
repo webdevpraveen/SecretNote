@@ -6,7 +6,7 @@ The goal of this project is to demonstrate how modern browser-based cryptography
 
 ---
 
-## ✨ Features
+## Features
 
 - Encrypt plain text into a secure alphanumeric string
 - Decrypt encrypted messages back to their original form
@@ -18,7 +18,7 @@ The goal of this project is to demonstrate how modern browser-based cryptography
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 This project uses the **Web Crypto API** provided by modern browsers.
 
@@ -37,7 +37,7 @@ This project uses the **Web Crypto API** provided by modern browsers.
 
 ---
 
-## 🔐 Security Notes
+## Security Notes
 
 - Encryption and decryption happen entirely in the browser
 - No server is involved at any stage
@@ -47,7 +47,7 @@ This project uses the **Web Crypto API** provided by modern browsers.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - HTML5
 - CSS3
@@ -58,7 +58,7 @@ No external libraries or frameworks are used.
 
 ---
 
-## 📌 Future Improvements
+## Future Improvements
 
 - Password strength indicator
 - Option to download encrypted message as a file
@@ -67,7 +67,7 @@ No external libraries or frameworks are used.
 
 ---
 
-## 📜 Disclaimer
+## Disclaimer
 
 This project is intended for learning and personal use.  
 Do not use it for encrypting highly sensitive or critical information without proper security audits.
